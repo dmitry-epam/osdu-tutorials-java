@@ -1,19 +1,15 @@
 package quickstart.auth;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
 class AppTest {
 
-	@Test
-	void testApp() {
-		fail("Not yet implemented");
-	}
 
 	@Test
-	void testGetBearerToken() {
-		fail("Not yet implemented");
+	void testGetBearerToken() {	
+		assertNotNull(App.getBearerToken());	
 	}
 
 }

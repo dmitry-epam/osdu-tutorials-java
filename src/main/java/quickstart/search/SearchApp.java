@@ -27,8 +27,9 @@ public class SearchApp {
 	 * bearerToken comes from the quickstart.auth.App class, getBearerToken method
 	 */
 	
-	public void findAWell(String bearerToken) {
+	public static String findAWell(String bearerToken) {
 		BufferedReader reader = null;
+		String response = null;
 		try {
 			URL url = new URL(resourceHost + "/indexSearch");
 			HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
@@ -56,11 +57,11 @@ public class SearchApp {
 			while ((line = reader.readLine()) != null) {
 				out.append(line);
 			}
-			String response = out.toString();
-			System.out.println(response);
+			response = out.toString();
+			// System.out.println(response);
 		} catch (Exception e) {
 			// handle exception
 		}
-		
+		return response;
 	}
 }

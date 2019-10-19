@@ -1,14 +1,14 @@
 package quickstart.search;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.assertNotNull;
 import org.junit.jupiter.api.Test;
+import quickstart.auth.App;
 
 class SearchAppTest {
 
 	@Test
 	void testFindAWell() {
-		fail("Not yet implemented");
+		assertNotNull(SearchApp.findAWell(App.getBearerToken()));
 	}
 
 }
