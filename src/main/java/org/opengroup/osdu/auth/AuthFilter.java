@@ -84,6 +84,7 @@ public class AuthFilter implements Filter {
         TokenResponse tokenResponse = tokenClient.exec();
         request.getSession(true).setAttribute("access_token", tokenResponse.getAccessToken());
         request.getSession(true).setAttribute("id_token", tokenResponse.getIdToken());
+        request.getSession(true).setAttribute("refresh_token", tokenResponse.getRefreshToken());
     }
 
     private void redirectToLogin(OpenIdConfigurationResponse discoveryResponse, HttpServletResponse response) throws IOException {
