@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '8080:8080'
+    environment:
+      - OSDU_CLIENT_ID=id
+      - OSDU_CLIENT_SECRET=secret
+      - OSDU_AUTH_BASE_URL=url
