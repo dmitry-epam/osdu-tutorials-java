@@ -16,7 +16,10 @@
     <maven.compiler.target>13</maven.compiler.target>
 
     <oxauth-client.version>4.1.0-SNAPSHOT</oxauth-client.version>
+    <httpclient.version>4.5.10</httpclient.version>
     <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+    <jackson.version>2.10.0</jackson.version>
+    <commons-io.version>2.6</commons-io.version>
   </properties>
 
   <repositories>
@@ -32,6 +35,21 @@
       <groupId>org.gluu</groupId>
       <artifactId>oxauth-client</artifactId>
       <version>${oxauth-client.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
     </dependency>
 
     <dependency>

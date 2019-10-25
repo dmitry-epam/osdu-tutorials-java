@@ -23,4 +23,14 @@
     <servlet-name>authServlet</servlet-name>
     <url-pattern>/auth/callback</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>searchServlet</servlet-name>
+    <servlet-class>org.opengroup.osdu.search.SearchServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchServlet</servlet-name>
+    <url-pattern>/find</url-pattern>
+  </servlet-mapping>
 </web-app>
