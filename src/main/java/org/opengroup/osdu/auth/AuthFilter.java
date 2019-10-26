@@ -23,7 +23,7 @@ public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
-        authorizeParameters = "scope=openid email&response_type=code";
+        authorizeParameters = "scope=openid email offline_access&response_type=code";
         redirectUri = "http://localhost:8080" + CALLBACK_URL;
         discoveryUrl = System.getenv("OSDU_AUTH_BASE_URL") + WELL_KNOWN_CONNECT_PATH;
         clientId = System.getenv("OSDU_CLIENT_ID");
