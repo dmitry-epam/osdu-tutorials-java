@@ -6,6 +6,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import java.util.*;
 import static org.opengroup.osdu.utils.Singletons.HTTP_CLIENT;
 import static org.opengroup.osdu.utils.Singletons.OBJECT_MAPPER;
 
+@WebServlet(name = "searchServlet", urlPatterns = {"/find"})
 public class SearchServlet extends HttpServlet {
 
     private static final String INDEX_SEARCH_PATH = "/indexSearch";

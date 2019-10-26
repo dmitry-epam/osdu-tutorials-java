@@ -5,10 +5,12 @@ import org.gluu.oxauth.model.common.AuthenticationMethod;
 import org.gluu.oxauth.model.common.GrantType;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebFilter(filterName = "authFilter", urlPatterns = {"/", "/auth/callback"})
 public class AuthFilter implements Filter {
 
     private static final String WELL_KNOWN_CONNECT_PATH = "/.well-known/openid-configuration";
