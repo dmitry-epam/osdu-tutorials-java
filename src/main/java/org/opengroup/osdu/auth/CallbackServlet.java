@@ -1,7 +1,5 @@
 package org.opengroup.osdu.auth;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,9 +8,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CallbackServlet extends HttpServlet {
+import static org.opengroup.osdu.utils.Singletons.OBJECT_MAPPER;
 
-    private final ObjectMapper mapper = new ObjectMapper();
+public class CallbackServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -30,7 +28,7 @@ public class CallbackServlet extends HttpServlet {
         result.put("refresh_token", req.getSession().getAttribute("refresh_token"));
 
         try {
-            return mapper.writeValueAsString(result);
+            return OBJECT_MAPPER.writeValueAsString(result);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

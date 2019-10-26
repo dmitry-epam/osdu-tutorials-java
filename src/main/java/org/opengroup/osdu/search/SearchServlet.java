@@ -1,12 +1,10 @@
 package org.opengroup.osdu.search;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.util.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+import static org.opengroup.osdu.utils.Singletons.HTTP_CLIENT;
+import static org.opengroup.osdu.utils.Singletons.OBJECT_MAPPER;
+
 public class SearchServlet extends HttpServlet {
 
     private static final String INDEX_SEARCH_PATH = "/indexSearch";
@@ -24,8 +25,6 @@ public class SearchServlet extends HttpServlet {
     private String searchApiUrl;
 
     private String requestBodyTemplate;
-
-    private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public void init() {
@@ -48,7 +47,7 @@ public class SearchServlet extends HttpServlet {
 
     private List<Object> searchWellData(String wellName) {
         try {
-            CloseableHttpClient client = HttpClients.createDefault();
+            CloseableHttpClient client = HTTP_CLIENT;
             HttpPost httpPost = new HttpPost(searchApiUrl);
 
             httpPost.setEntity(new StringEntity(
@@ -65,7 +64,7 @@ public class SearchServlet extends HttpServlet {
                     StandardCharsets.UTF_8
             );
 
-            return (List) mapper.readValue(jsonResult, Map.class)
+            return (List) OBJECT_MAPPER.readValue(jsonResult, Map.class)
                     .getOrDefault("results", Collections.emptyList());
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -95,7 +94,7 @@ public class SearchServlet extends HttpServlet {
 
         try {
             PrintWriter writer = resp.getWriter();
-            String body = mapper.writeValueAsString(groupedWellData);
+            String body = OBJECT_MAPPER.writeValueAsString(groupedWellData);
             writer.write(body);
             writer.flush();
         } catch (Exception e) {
