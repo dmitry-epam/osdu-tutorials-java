@@ -10,3 +10,4 @@ services:
       - OSDU_CLIENT_ID=id
       - OSDU_CLIENT_SECRET=secret
       - OSDU_AUTH_BASE_URL=url
+      - OSDU_API_BASE_URL=url
