@@ -24,16 +24,16 @@ public class SearchServlet extends HttpServlet {
 
     private static final String INDEX_SEARCH_PATH = "/indexSearch";
 
-    private String searchApiUrl;
+    private static final String SEARCH_API_URL = System.getenv("OSDU_API_BASE_URL") + INDEX_SEARCH_PATH;
 
     private String requestBodyTemplate;
 
     @Override
     public void init() {
-        searchApiUrl = System.getenv("OSDU_API_BASE_URL") + INDEX_SEARCH_PATH;
-
         try {
-            requestBodyTemplate = Files.readString(Paths.get(getClass().getClassLoader().getResource("index-search-template.json").toURI()));
+            requestBodyTemplate = Files.readString(
+                    Paths.get(getClass().getClassLoader().getResource("index-search-template.json").toURI())
+            );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -50,7 +50,7 @@ public class SearchServlet extends HttpServlet {
     private List<Object> searchWellData(String wellName) {
         try {
             CloseableHttpClient client = HTTP_CLIENT;
-            HttpPost httpPost = new HttpPost(searchApiUrl);
+            HttpPost httpPost = new HttpPost(SEARCH_API_URL);
 
             httpPost.setEntity(new StringEntity(
                     String.format(requestBodyTemplate, wellName)
