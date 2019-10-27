@@ -1,8 +1,68 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>osdu-tutorials-java</groupId>
-  <artifactId>osdu-tutorials-java</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  
+
+  <groupId>com.osdu</groupId>
+  <artifactId>test-api</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.compiler.source>13</maven.compiler.source>
+    <maven.compiler.target>13</maven.compiler.target>
+
+    <oxauth-client.version>4.1.0-SNAPSHOT</oxauth-client.version>
+    <httpclient.version>4.5.10</httpclient.version>
+    <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+    <jackson.version>2.10.0</jackson.version>
+    <commons-io.version>2.6</commons-io.version>
+    <azure-storage-blob.version>12.0.0-preview.4</azure-storage-blob.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>gluu</id>
+      <name>Gluu repository</name>
+      <url>http://ox.gluu.org/maven</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.gluu</groupId>
+      <artifactId>oxauth-client</artifactId>
+      <version>${oxauth-client.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-storage-blob</artifactId>
+      <version>${azure-storage-blob.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${javax.servlet-api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 </project>

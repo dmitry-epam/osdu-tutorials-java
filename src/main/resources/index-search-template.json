@@ -1,0 +1,13 @@
+{
+  "fulltext": "%s",
+  "metadata": {
+    "resource_type": [
+      "master-data/Well",
+      "work-product-component/WellLog",
+      "work-product-component/WellborePath"
+    ]
+  },
+  "facets": [
+    "resource_type"
+  ]
+}
